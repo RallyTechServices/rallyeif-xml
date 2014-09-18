@@ -1,0 +1,5 @@
+.idea/
+coverage/
+Gemfile.lock
+pkg/
+rallylog.log*
