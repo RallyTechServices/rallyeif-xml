@@ -3,3 +3,4 @@ coverage/
 Gemfile.lock
 pkg/
 rallylog.log*
+test_configuration_helper.rb
