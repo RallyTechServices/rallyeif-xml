@@ -31,6 +31,23 @@ module RallyEIF
       def version()
         return RallyEIF::XML::Version
       end
+
+      def self.version_message()
+        version_info = "#{RallyEIF::XML::Version}-#{RallyEIF::XML::Version.detail}"
+        return "XMLConnection version #{version_info}"
+      end
+      
+      def get_backend_version()
+        return "%s %s" % [name, version]
+      end
+      
+      def field_exists? (field_name)
+        return true
+      end
+      
+      def disconnect()
+        RallyLogger.info(self,"Would disconnect at this point if we needed to")
+      end
       
       def connect()
         RallyLogger.debug(self,"**************************************")

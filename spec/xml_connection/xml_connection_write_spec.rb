@@ -10,7 +10,8 @@ describe "Given " do
   end
   
   it "should save a single defect into the file" do
-    # pass create_internal(int_work_item)
+    # do create_internal(int_work_item)
+    # int_work_item is an OrderedHash
   end
 
   it "should save multiple defects into the same file" do

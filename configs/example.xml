@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+    <RallyConnection>
+      <Url>rally1.rallydev.com</Url>
+      <WorkspaceName>My WS</WorkspaceName>
+      <Projects>
+        <Project>My Project</Project>
+      </Projects>
+      <User>paerson@place.com</User>
+      <Password>secret</Password>
+      <ArtifactType>Defect</ArtifactType>
+      <ExternalIDField>ExternalID</ExternalIDField>
+    </RallyConnection>
+
+    <XMLConnection>
+      <User>None</User>
+      <Password>encoded-T-m-9-u-Z-Q-=-=-</Password>
+      <ArtifactType>Defect</ArtifactType>
+      <ExternalIDField>RallyID</ExternalIDField>
+      <Path>/test_dir/full_cycle</Path>
+   </XMLConnection>
+
+   <Connector>
+    <FieldMapping>
+      <Field><Rally>Name</Rally><Other>Headline</Other></Field>
+      <Field><Rally>Project</Rally><Other>Project</Other></Field>
+    </FieldMapping>
+    <RallyFieldHandlers>
+      <RallyReferenceFieldHandler>
+        <FieldName>Project</FieldName>
+      </RallyReferenceFieldHandler>
+    </RallyFieldHandlers>
+  </Connector>
+  <ConnectorRunner>
+    <Preview>false</Preview>
+    <Services>COPY_RALLY_TO_OTHER,UPDATE_RALLY_TO_OTHER</Services>
+  </ConnectorRunner>
+  
+</config>
