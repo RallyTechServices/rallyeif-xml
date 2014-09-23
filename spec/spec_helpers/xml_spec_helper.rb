@@ -23,16 +23,6 @@ module XMLSpecHelper
   FieldMap               = RallyEIF::WRK::FieldMap               if not defined?(FieldMap)
   Connector              = RallyEIF::WRK::Connector              if not defined?(Connector)
 
-  XML_BAD_ARTIFACT_CONFIG = "
-  <config>
-      <XMLConnection>
-        <User>None</User>
-        <Password>None</Password>
-        <ArtifactType>Fred</ArtifactType>
-        <ExternalIDField>RallyID</ExternalIDField>
-      </XMLConnection>
-    </config>"
-  
   XML_MISSING_PATH_CONFIG = "
     <config>
         <XMLConnection>

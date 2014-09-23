@@ -33,8 +33,24 @@ module RallyEIF
       end
       
       def connect()
+        RallyLogger.debug(self,"**************************************")
         RallyLogger.debug(self,"Connecting to filesystem to prepare to write XML")
+        RallyLogger.debug(self,"Connector Name   : #{name}")
+        RallyLogger.debug(self,"Connector Version: #{version}")
+        RallyLogger.debug(self,"Artifact Type    : #{artifact_type}")
+        RallyLogger.debug(self,"Save Path        : #{path}")
+        RallyLogger.debug(self,"**************************************")
+        
+        validate()
         return
+      end
+      
+      def validate
+        valid_artifact_types = ["Defect"]
+        if !valid_artifact_types.include?(@artifact_type)
+          RallyLogger.error(self,"This ArtifactType is not supported: #{@artifact_type}")
+          raise UnrecoverableException.new("Unsupported ArtifactType: #{@artifact_type}",self)
+        end
       end
     end
   end

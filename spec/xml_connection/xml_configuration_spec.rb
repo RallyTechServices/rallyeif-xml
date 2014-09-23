@@ -20,7 +20,8 @@ describe "The XML Connection Config File" do
     expect { xml_connect(XMLSpecHelper::XML_MISSING_PATH_CONFIG) }.to raise_error
   end
   it "should reject invalid artifact types" do
-    expect { xml_connect(XMLSpecHelper::XML_BAD_ARTIFACT_CONFIG) }.to raise_error
+    fred_artifact_config = YetiTestUtils::modify_config_data(XMLSpecHelper::XML_STATIC_CONFIG,"XMLConnection","ArtifactType","Fred","replace","ArtifactType")
+    expect { xml_connect(fred_artifact_config) }.to raise_error(/Unsupported ArtifactType/)
   end
   
   it "should read field setting when various maps applied" do
