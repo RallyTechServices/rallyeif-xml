@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../spec_helpers/xml_spec_helper'
 include XMLSpecHelper
 include YetiTestUtils
 
-describe "The XML Connection Config File" do
+describe "Given configuration in the XMLConnection section" do
   before(:all) do
     #
   end
@@ -19,24 +19,16 @@ describe "The XML Connection Config File" do
     expect { xml_connect(XMLSpecHelper::XML_MISSING_ARTIFACT_CONFIG) }.to raise_error
     expect { xml_connect(XMLSpecHelper::XML_MISSING_PATH_CONFIG) }.to raise_error
   end
+  
   it "should reject invalid artifact types" do
     fred_artifact_config = YetiTestUtils::modify_config_data(XMLSpecHelper::XML_STATIC_CONFIG,"XMLConnection","ArtifactType","Fred","replace","ArtifactType")
     expect { xml_connect(fred_artifact_config) }.to raise_error(/Unsupported ArtifactType/)
   end
   
-  it "should read field setting when various maps applied" do
+  it "should determine file name " do
+    @xml_connection = xml_connect(XMLSpecHelper::XML_STATIC_CONFIG)
     
   end
   
-  it "should set field settings when ALL chosen" do
-
-  end
   
-  it "should set field settings when both ALL and mappings chosen" do
-    
-  end
-  
-  it "should assume all if no field setttings given" do
-    
-  end
 end
