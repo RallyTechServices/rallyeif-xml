@@ -9,7 +9,6 @@ describe "Given configuration in the Connector section" do
     #
   end
   
-  # TODO: figure out how to override the connector to do mapping
   it "should read field setting when various maps applied" do
     
   end

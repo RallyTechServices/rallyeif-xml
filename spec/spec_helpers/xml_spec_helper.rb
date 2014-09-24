@@ -39,7 +39,7 @@ module XMLSpecHelper
             <User>None</User>
             <Password>None</Password>
             <ExternalIDField>RallyID</ExternalIDField>
-            <Path>/test_dir</Path>
+            <Path>output_dir</Path>
           </XMLConnection>
         </config>"
   
@@ -50,7 +50,7 @@ module XMLSpecHelper
           <Password>None</Password>
           <ArtifactType>Defect</ArtifactType>
           <ExternalIDField>RallyID</ExternalIDField>
-          <Path>/test_dir</Path>
+          <Path>output_dir</Path>
         </XMLConnection>
       </config>"
 
@@ -73,7 +73,7 @@ module XMLSpecHelper
           <Password>None</Password>
           <ArtifactType>Defect</ArtifactType>
           <ExternalIDField>RallyID</ExternalIDField>
-          <Path>/test_dir/full_cycle</Path>
+          <Path>/output_dir/full_cycle</Path>
        </XMLConnection>
 
        <Connector>
