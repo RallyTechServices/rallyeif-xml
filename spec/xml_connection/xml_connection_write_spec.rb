@@ -62,11 +62,24 @@ describe "When writing out data" do
    
   end
   
-  it "should format reference fields properly" do
-    # TODO: create a reference field handler (needs tests, too)
+  it "will save if there are changes to an item" do
+    item = RallyEIF::WRK::OrderedHash.new()
+    item["Name"] = "My Name"
+    item["FormattedID"] = "DE37"
+
+    @xml_connection.update_internal(nil,item)
+    File.file?(@xml_connection.path_to_output_file).should be_true
+
+    file = File.open(@xml_connection.path_to_output_file,"rb")
+    file.read.should == "<items>\n  <defect>\n    <Name>My Name</Name>\n    <FormattedID>DE37</FormattedID>\n  </defect>\n</items>\n"
   end
   
-  it "should handle duplicates properly" do
-    # TODO: create a duplicates field handler (needs tests, too)
+  it "won't save anything if the only change was to the external id field" do
+    item = RallyEIF::WRK::OrderedHash.new()
+    item["#{TestConfig::RALLY_SOURCE_EXTERNAL_ID_FIELD}"] = "waiting xml"
+
+    @xml_connection.update_internal(nil,item)
+    File.file?(@xml_connection.path_to_output_file).should be_false
   end
+
 end

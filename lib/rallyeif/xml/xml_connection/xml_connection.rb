@@ -22,14 +22,17 @@ module RallyEIF
       
       def read_config(config)
         @artifact_type = XMLUtils.get_element_value(config,'XMLConnection',"ArtifactType")
+        @external_id_field = XMLUtils.get_element_value(config,'XMLConnection',"ExternalIDField")
         @path = XMLUtils.get_element_value(config,'XMLConnection',"Path")
         @path = "./#{@path}".gsub(/\/\//,'/').gsub(/\.\/\.\//,'./')
+        @host = "No host"
         
         @path_to_output_file = "#{@path}/#{@start_in_seconds}.xml"
+        
       end
       
       def name()
-        return "John and JP's XML Connector"
+        return "XML Connector"
       end
       
       def version()
@@ -83,6 +86,15 @@ module RallyEIF
         
       end
       
+      # find_by_external_id is forced from inheritance
+      def find_by_external_id(external_id)
+        {}
+      end
+      
+      def get_object_link(artifact)
+        return nil
+      end
+    
       def create_internal(int_work_item)
         item_xml = item_to_xml(int_work_item)
         
@@ -104,8 +116,29 @@ module RallyEIF
           file.write(item_xml)
           file.write("</items>\n")
         }
+        
+        RallyLogger.info( self, " Created #{@artifact_type} at #{@path_to_output_file}")
+        return int_work_item
       end
       
+      # This method will hide the actual call of how to get the id field's value
+      def get_id_value(artifact)
+          return "waiting XML"
+      end
+    
+      # we don't really have anything to "update". Just write it out.
+      def update_internal(artifact, int_work_item)
+        # assume the external id field is the same name as the other system
+        # if the only changed field is the external id field, don't do anything
+        RallyLogger.debug(self,"Keys: |#{int_work_item.keys.join(',')}|, compare to |#{@external_id_field}|")
+        if int_work_item.keys.length == 1 && int_work_item.keys[0] == @external_id_field
+          RallyLogger.info(self, "Skipping because the only field that changed is #{@external_id_field}")
+          return nil
+        else
+          return create_internal(int_work_item)
+        end
+      end
+    
       # item is an OrderedHash
       def item_to_xml(item)
         item_type = @artifact_type.downcase
