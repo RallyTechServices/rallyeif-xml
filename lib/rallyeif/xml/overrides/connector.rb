@@ -23,7 +23,7 @@ module RallyEIF
       def set_xml_field_handlers(connection,mapped_fields)
         object_fields =  [:Project, :Workspace, :Subscription, :Release, :Iteration, :Owner, 
         :WorkProduct, :SubmittedBy, :TestCase, :TestCaseResult]
-        collection_fields =  [:Tasks,:Duplicates]
+        collection_fields =  [:Tasks,:Duplicates, :TestCases, :Tags, :ChangeSets]
                 
         mapped_fields.each do |field_map|
           name = field_map.rally_attr

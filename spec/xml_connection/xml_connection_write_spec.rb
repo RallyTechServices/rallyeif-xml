@@ -82,4 +82,33 @@ describe "When writing out data" do
     File.file?(@xml_connection.path_to_output_file).should be_false
   end
 
+  it "will save related collection fields" do
+    item = RallyEIF::WRK::OrderedHash.new()
+    xml = "    <Duplicates>\n"
+    xml = xml + "      <Defect ref=\"https://demo-west.rallydev.com/slm/webservice/1.42/defect/5375198\" name=\"I'm another defect\" formatted_i_d=\"DE18\" />\n"
+    xml = xml + "      <Defect ref=\"https://demo-west.rallydev.com/slm/webservice/1.42/defect/5375222\" name=\"I'm a third defect\" formatted_i_d=\"DE19\" />\n"
+    xml = xml + "    </Duplicates>"
+    
+    item["Duplicates"] = xml
+      
+    @xml_connection.create_internal(item)
+    File.file?(@xml_connection.path_to_output_file).should be_true
+
+    file = File.open(@xml_connection.path_to_output_file,"rb")
+    file.read.should == "<items>\n  <defect>\n#{xml}  </defect>\n</items>\n"
+  end
+  
+  it "will save related object fields" do
+    item = RallyEIF::WRK::OrderedHash.new()
+    xml = "    <Project ref=\"https://demo-west.rallydev.com/slm/webservice/1.42/project/5375198\" name=\"I'm another project\" />\n"
+    
+    item["Project"] = xml
+      
+    @xml_connection.create_internal(item)
+    File.file?(@xml_connection.path_to_output_file).should be_true
+
+    file = File.open(@xml_connection.path_to_output_file,"rb")
+    file.read.should == "<items>\n  <defect>\n#{xml}  </defect>\n</items>\n"
+  end
+  
 end

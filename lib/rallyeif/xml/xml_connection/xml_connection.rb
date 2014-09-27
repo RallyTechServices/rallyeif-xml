@@ -100,6 +100,7 @@ module RallyEIF
       end
     
       def create_internal(int_work_item)
+        RallyLogger.debug(self,"  Preparing to save XML")
         item_xml = item_to_xml(int_work_item)
         
         if File.file?(@path_to_output_file) then
@@ -148,9 +149,13 @@ module RallyEIF
         item_type = @artifact_type.downcase
         xml = "  <#{item_type}>\n"
         
-        item.each_key do |key|
+        item.each_key do |key|          
           if key != "_type" && !key.nil? then
-            xml = xml + "    <#{key}>#{item[key]}</#{key}>\n"
+            if /\<#{key}/ =~ "#{item[key]}" then
+              xml = xml + "#{item[key]}"
+            else
+              xml = xml + "    <#{key}>#{item[key]}</#{key}>\n"
+            end
           end
         end
         xml = xml + "  </#{item_type}>\n"

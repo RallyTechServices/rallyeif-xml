@@ -20,7 +20,7 @@ module RallyEIF
     module FieldHandlers
 
       class RallyObjectXMLFieldHandler < RallyFieldHandler
-
+        
         VALID_REFERENCES = [:Project, :Workspace, :Subscription, 
           :Release, :Iteration, :Owner, 
           :WorkProduct, :SubmittedBy, :TestCase, :TestCaseResult]
@@ -37,7 +37,7 @@ module RallyEIF
           # have to read because the helpful addition they made to make projects, iterations and releases render as strings
           rally_artifact.read
           reference_value = rally_artifact[@field_name]
-          RallyLogger.debug(self, "Working with #{reference_value}, #{reference_value.class}")
+          RallyLogger.debug(self, "Working with #{reference_value}")
           return nil if reference_value.nil? || reference_value.empty?
           
           if reference_value.class == String #wsapi prior to 1.19 gives us a string of username
@@ -51,11 +51,11 @@ module RallyEIF
           record_type = object['_type']
           ref = object['_ref'].gsub(/\.js/,"")
           name = object['_refObjectName']
-          xml = "<#{@field_name} ref=\"#{ref}\" name=\"#{name}\" />"
+          xml = "    <#{@field_name} ref=\"#{ref}\" name=\"#{name}\" />\n"
           if record_type == "User" then
             object.read
             name = object['UserName']
-            xml = "<#{@field_name} ref=\"#{ref}\" user_name=\"#{name}\" />"
+            xml = "    <#{@field_name} ref=\"#{ref}\" user_name=\"#{name}\" />\n"
           end
           return xml
         end

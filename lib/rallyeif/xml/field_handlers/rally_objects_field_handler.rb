@@ -20,7 +20,7 @@ module RallyEIF
 
       class RallyObjectsXMLFieldHandler < RallyFieldHandler
 
-        VALID_REFERENCES = [:Tasks,:Duplicates]
+        VALID_REFERENCES = [:Tasks,:Duplicates, :TestCases, :Tags, :ChangeSets]
 
         #  no need to transform in
         def transform_in(value)
@@ -45,7 +45,7 @@ module RallyEIF
         
         def make_xml_for_objects(objects)
           RallyLogger.debug(self,"Making XML")
-          xml = "<#{@field_name}>\n"
+          xml = "    <#{@field_name}>\n"
           objects.each do |object|
             record_type = object['_type']
             ref = object['_ref'].gsub(/\.js/,"")
@@ -53,9 +53,9 @@ module RallyEIF
             object.read
             fid = object['FormattedID']
               
-            xml = xml + "  <#{record_type} ref=\"#{ref}\" name=\"#{name}\" formatted_i_d=\"#{fid}\" />\n"
+            xml = xml + "      <#{record_type} ref=\"#{ref}\" name=\"#{name}\" formatted_i_d=\"#{fid}\" />\n"
           end
-          xml = xml + "</#{@field_name}>"
+          xml = xml + "    </#{@field_name}>\n"
           return xml
         end
 

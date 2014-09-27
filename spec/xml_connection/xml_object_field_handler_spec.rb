@@ -26,7 +26,7 @@ describe "When writing out data that has fields with related records" do
     @fh.connection = @rally_connection
     @fh.field_name = "Owner"
     
-    @fh.transform_out(defect).should == "<Owner ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/user/#{TestConfig::RALLY_SOURCE_USER_OID}\" user_name=\"#{TestConfig::RALLY_SOURCE_USER}\" />"
+    @fh.transform_out(defect).should == "    <Owner ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/user/#{TestConfig::RALLY_SOURCE_USER_OID}\" user_name=\"#{TestConfig::RALLY_SOURCE_USER}\" />\n"
     defect.delete
   end
   
@@ -38,7 +38,7 @@ describe "When writing out data that has fields with related records" do
     @fh.connection = @rally_connection
     @fh.field_name = "SubmittedBy"
     
-    @fh.transform_out(defect).should == "<SubmittedBy ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/user/#{TestConfig::RALLY_SOURCE_USER_OID}\" user_name=\"#{TestConfig::RALLY_SOURCE_USER}\" />"
+    @fh.transform_out(defect).should == "    <SubmittedBy ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/user/#{TestConfig::RALLY_SOURCE_USER_OID}\" user_name=\"#{TestConfig::RALLY_SOURCE_USER}\" />\n"
     defect.delete
   end
   
@@ -50,7 +50,7 @@ describe "When writing out data that has fields with related records" do
     @fh.connection = @rally_connection
     @fh.field_name = "Project"
     
-    @fh.transform_out(defect).should == "<Project ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/project/#{TestConfig::RALLY_SOURCE_PROJECT_1_OID}\" name=\"#{TestConfig::RALLY_SOURCE_PROJECT_1}\" />"
+    @fh.transform_out(defect).should == "    <Project ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/project/#{TestConfig::RALLY_SOURCE_PROJECT_1_OID}\" name=\"#{TestConfig::RALLY_SOURCE_PROJECT_1}\" />\n"
     defect.delete
   end
   

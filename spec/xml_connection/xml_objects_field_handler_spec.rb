@@ -34,10 +34,10 @@ describe "When writing out data that has fields with multiple related records" d
     @fh.connection = @rally_connection
     @fh.field_name = "Tasks"
     
-    good_xml = "<Tasks>\n"
-    good_xml = good_xml + "  <Task ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/task/#{task_1['ObjectID']}\" name=\"#{name_1}\" formatted_i_d=\"#{task_1['FormattedID']}\" />\n"
-    good_xml = good_xml + "  <Task ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/task/#{task_2['ObjectID']}\" name=\"#{name_2}\" formatted_i_d=\"#{task_2['FormattedID']}\" />\n"
-    good_xml = good_xml + "</Tasks>"
+    good_xml = "    <Tasks>\n"
+    good_xml = good_xml + "      <Task ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/task/#{task_1['ObjectID']}\" name=\"#{name_1}\" formatted_i_d=\"#{task_1['FormattedID']}\" />\n"
+    good_xml = good_xml + "      <Task ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/task/#{task_2['ObjectID']}\" name=\"#{name_2}\" formatted_i_d=\"#{task_2['FormattedID']}\" />\n"
+    good_xml = good_xml + "    </Tasks>\n"
     @fh.transform_out(defect).should == good_xml
     #defect.delete
   end
@@ -56,10 +56,10 @@ describe "When writing out data that has fields with multiple related records" d
     @fh.connection = @rally_connection
     @fh.field_name = "Duplicates"
     
-    good_xml = "<Duplicates>\n"
-    good_xml = good_xml + "  <Defect ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/defect/#{defect_duplicate_1['ObjectID']}\" name=\"#{name_1}\" formatted_i_d=\"#{defect_duplicate_1['FormattedID']}\" />\n"
-    good_xml = good_xml + "  <Defect ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/defect/#{defect_duplicate_2['ObjectID']}\" name=\"#{name_2}\" formatted_i_d=\"#{defect_duplicate_2['FormattedID']}\" />\n"
-    good_xml = good_xml + "</Duplicates>"
+    good_xml = "    <Duplicates>\n"
+    good_xml = good_xml + "      <Defect ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/defect/#{defect_duplicate_1['ObjectID']}\" name=\"#{name_1}\" formatted_i_d=\"#{defect_duplicate_1['FormattedID']}\" />\n"
+    good_xml = good_xml + "      <Defect ref=\"https://#{TestConfig::RALLY_SOURCE_URL}/slm/webservice/#{@wsapi_version}/defect/#{defect_duplicate_2['ObjectID']}\" name=\"#{name_2}\" formatted_i_d=\"#{defect_duplicate_2['FormattedID']}\" />\n"
+    good_xml = good_xml + "    </Duplicates>\n"
     @fh.transform_out(defect).should == good_xml
     defect.delete
   end
