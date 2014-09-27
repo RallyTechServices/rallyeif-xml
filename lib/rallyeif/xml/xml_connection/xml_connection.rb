@@ -95,6 +95,10 @@ module RallyEIF
         return nil
       end
     
+      def pre_create(int_work_item)
+        return int_work_item
+      end
+    
       def create_internal(int_work_item)
         item_xml = item_to_xml(int_work_item)
         

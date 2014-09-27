@@ -1,9 +1,8 @@
-
 module RallyEIF
   module WRK
     class ConnectorRunner
       def version_info()
-        hub_version    = "#{RallyEIF::WRK::Version.to_s + "-" + RallyEIF::WRK::Version.short_detail}" + " (with embedded overrides)"
+        hub_version    = "#{RallyEIF::WRK::Version.to_s} (with embedded overrides)"
          
         rally_version  = RallyEIF::WRK::RallyConnection.version_message 
         other_version  = ""

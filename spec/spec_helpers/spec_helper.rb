@@ -105,6 +105,18 @@ module YetiTestUtils
       testcase
     end
 
+    def create_arbitrary_rally_artifact(rally_type, rally_connection, extra_fields = nil)
+      name = Time.now.strftime("%y%m%d%H%M%S") + Time.now.usec.to_s
+      fields = {}
+      fields[:Name] = name
+      if !extra_fields.nil?
+        fields.merge!(extra_fields)
+      end
+      item = rally_connection.rally.create(rally_type,fields)
+      return [item, fields[:Name]]
+    end
+    
+    # create an object of the same type as the connection
     def create_rally_artifact(rally_connection, extra_fields = nil)
       name = Time.now.strftime("%y%m%d%H%M%S") + Time.now.usec.to_s
       fields = {}
@@ -112,8 +124,8 @@ module YetiTestUtils
       if !extra_fields.nil?
         fields.merge!(extra_fields)
       end
-      defect = rally_connection.create(fields)
-      return [defect, name]
+      item = rally_connection.create(fields)
+      return [item, fields[:Name]]
     end
 
     #def rally_connect(config_file)
