@@ -28,6 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov",    "= 0.7.1"
   spec.add_development_dependency "ci_reporter",  "= 1.9.0"
   spec.add_development_dependency "geminabox",    "= 0.10.7"
-  spec.add_development_dependency "ambient_spec",    ">= 0.13.2"
+  spec.add_development_dependency "ambient_spec", ">= 0.13.2"
 
 end

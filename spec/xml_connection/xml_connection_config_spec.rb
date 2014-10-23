@@ -4,12 +4,12 @@ require File.dirname(__FILE__) + '/../spec_helpers/xml_spec_helper'
 include XMLSpecHelper
 include YetiTestUtils
 
-describe "Given configuration in the XMLConnection section" do
+describe "Given configuration in the XMLConnection section," do
   before(:all) do
     #
   end
   
-  it "should successfully load basic config settings " do
+  it "should successfully load basic config settings" do
     xml_connection = xml_connect(XMLSpecHelper::XML_STATIC_CONFIG)
     xml_connection.artifact_type.should == "Defect"
     xml_connection.path.should == "./output_dir"
@@ -59,7 +59,7 @@ describe "Given configuration in the XMLConnection section" do
     modified_config = YetiTestUtils::modify_config_data(XMLSpecHelper::XML_STATIC_CONFIG,"XMLConnection","Path","#{test_dir}","replace","Path")
     
     xml_connection = xml_connect(modified_config)
-    
+
     xml_connection.path.should == test_dir
     Dir.exists?(test_dir).should be_true
     # remember to clean up!
