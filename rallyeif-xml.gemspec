@@ -4,8 +4,8 @@ require 'rallyeif/xml/version'
 Gem::Specification.new do |spec|
   spec.name          = "rallyeif-xml"
   spec.version       = RallyEIF::XML::Version
-  spec.authors       = ["Rally Software Development Corp"]
-  spec.email         = ["support@rallydev.com"]
+  spec.authors       = ["Rally Technical Services"]
+  spec.email         = ["technical-services@rallydev.com"]
   spec.description   = %q{XML Spoke for EIF connectors}
   spec.summary       = %q{XML spoke for use with Hub of EIF}
   spec.homepage      = "https://github.com/RallyTechServices/rallyeif-xml"
@@ -24,10 +24,9 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler",      "= 1.5.1"
   spec.add_development_dependency "rake",         "= 10.1.0"
-  spec.add_development_dependency "rspec",        "= 3.1.0"
+  spec.add_development_dependency "rspec",        "= 2.14.0"
   spec.add_development_dependency "simplecov",    "= 0.7.1"
   spec.add_development_dependency "ci_reporter",  "= 1.9.0"
   spec.add_development_dependency "geminabox",    "= 0.10.7"
-  spec.add_development_dependency "ambient_spec", ">= 0.13.2"
 
 end
