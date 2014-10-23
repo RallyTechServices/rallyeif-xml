@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.files         = all_files.reject{|fn| fn =~ /^(#{exclusions.join("|")})/}
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "rallyeif-wrk",     "= 0.5.2"
+  spec.add_runtime_dependency "rallyeif-wrk",     "= 0.5.4"
   spec.add_runtime_dependency "xml-simple",       "= 1.1.2"
   spec.add_runtime_dependency "mime-types",       "= 2.0"
 

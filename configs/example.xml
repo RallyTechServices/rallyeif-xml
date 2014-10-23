@@ -21,15 +21,9 @@
    </XMLConnection>
 
    <Connector>
-    <FieldMapping>
-      <Field><Rally>Name</Rally><Other>Headline</Other></Field>
-      <Field><Rally>Project</Rally><Other>Project</Other></Field>
+    <FieldMapping all_rally_fields="true">
+      <Field><Rally>Name</Rally><Other>Title</Other></Field>
     </FieldMapping>
-    <RallyFieldHandlers>
-      <RallyReferenceFieldHandler>
-        <FieldName>Project</FieldName>
-      </RallyReferenceFieldHandler>
-    </RallyFieldHandlers>
   </Connector>
   <ConnectorRunner>
     <Preview>false</Preview>
