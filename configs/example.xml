@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <config>
+
     <RallyConnection>
       <Url>rally1.rallydev.com</Url>
       <WorkspaceName>My WS</WorkspaceName>
@@ -10,6 +11,9 @@
       <Password>secret</Password>
       <ArtifactType>Defect</ArtifactType>
       <ExternalIDField>ExternalID</ExternalIDField>
+      <CopySelectors>
+        <CopySelector>FormattedID > DE20</CopySelector>
+      </CopySelectors>
     </RallyConnection>
 
     <XMLConnection>
@@ -25,9 +29,11 @@
       <Field><Rally>Name</Rally><Other>Title</Other></Field>
     </FieldMapping>
   </Connector>
+
   <ConnectorRunner>
     <Preview>false</Preview>
-    <Services>COPY_RALLY_TO_OTHER,UPDATE_RALLY_TO_OTHER</Services>
+    <LogLevel>Debug</LogLevel>
+    <Services>COPY_RALLY_TO_XML,  UPDATE_RALLY_TO_XML</Services>
   </ConnectorRunner>
-  
+
 </config>
