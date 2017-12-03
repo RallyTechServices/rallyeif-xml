@@ -102,7 +102,7 @@ module RallyEIF
       end
 
       # override because of field value checking (external id)
-            def update_other(params)
+      def update_other(params)
         operation    = params[:operation] || :update
         rally_wkitem = params[:artifact]
         rally_wkitem_id   = @rally_connection.get_id_value(rally_wkitem)
