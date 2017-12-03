@@ -3,7 +3,7 @@ module RallyEIF
   module XML
     module Version
 
-      VERSION = "4.0.0"
+      VERSION = "4.0.0.1"
 
       def self.to_s
         VERSION.to_s
